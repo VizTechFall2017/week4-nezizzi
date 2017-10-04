@@ -4,7 +4,7 @@ var svg = d3.select('svg')
 
 
 var ScaleX = d3.scaleLinear().domain([0,400]).range([0,600]);
-var ScaleY = d3.scaleLinear().domain([400,0]).range([0,400]);
+var ScaleY = d3.scaleLinear().domain([0,400]).range([0,400]);
 
 var allData;
 
@@ -73,3 +73,7 @@ function buttonClicked() {
         updateData(data2016);
     }
 }
+
+window.setInterval(function(){
+    buttonClicked();
+}, 1000);
