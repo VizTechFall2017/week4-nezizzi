@@ -8,6 +8,8 @@ var ScaleY = d3.scaleLinear().domain([400,0]).range([0,400]);
 
 var allData;
 
+var currentYear= "2016";
+
 d3.csv('./data.csv', function(dataIn){
 
     allData = dataIn;
@@ -48,4 +50,26 @@ function updateData(dataPoints) {
         })
 }
 
+function buttonClicked() {
 
+    if (currentYear == '2016') {
+        data2017 = allData.filter(function (d) {
+            return d.year == 2017;
+        });
+
+        console.log(data2017);
+
+        currentYear = '2017';
+        updateData(data2017);
+    }
+    else{
+        data2016 = allData.filter(function (d) {
+            return d.year == 2016;
+        });
+
+        console.log(data2016);
+
+        currentYear = '2016';
+        updateData(data2016);
+    }
+}
