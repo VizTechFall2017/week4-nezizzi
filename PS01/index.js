@@ -41,8 +41,8 @@ d3.csv('./data.csv', function(dataIn){
     filterData = filter1Data.filter(function(d) {
         return (d.A8CBGPCR)  != 'D';
     });
-    //console.log(filter1Data);
-    //console.log(filterData);
+    console.log(filter1Data);
+    console.log(filterData);
 
     //save the objects from the .csv with female
     female = filterData.filter(function(d){
@@ -90,6 +90,7 @@ function buttonClicked() {
         });
         gender = male;
         drawPoints(male);
+
     }
 
     else{
