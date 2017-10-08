@@ -8,7 +8,7 @@ var female;
 gender= female;
 
 //axes
-var ScaleX = d3.scaleLinear().domain([0,30]).range([0, 600]);
+var ScaleX = d3.scaleLinear().domain([0,30]).range([0, 450]);
 var ScaleY = d3.scaleLinear().domain([0,30]).range([400, 0]);
 svg.append('g')
     .attr('transform', 'translate(0,400)')
