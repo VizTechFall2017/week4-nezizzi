@@ -7,7 +7,7 @@ var data30; // dancers ages 26-30
 d3.csv('./data.csv', function(dataIn){
 
     allData = dataIn;
-    console.log(allData);
+    //console.log(allData);
     //save the objects from the .csv with age input 21-25
     data25 = dataIn.filter(function(d){
         return d.A3AGEGP == 1;
@@ -19,7 +19,22 @@ d3.csv('./data.csv', function(dataIn){
     });
 
     //call the drawPoints function below, and hand it the data2016 variable with the 2016 object array in it
-   // drawPoints(data2016);
+    drawPoints(data25);
 
 });
 
+//drawing data points function
+function drawPoints(dataPoints) {
+
+    console.log(dataPoints);
+    svg.selectAll('.myCircles')
+        .data(dataPoints)
+        .attr('cx', function(d){
+            console.log(cx);
+            return d.A8BEGTR;
+        })
+        .attr('cy',function(d){
+            return d.A8CBGPCR;
+        })
+        .attr('r',1);
+}
