@@ -6,8 +6,8 @@ var allData;
 var male;
 var female;
 
-var ScaleX = d3.scaleLinear().domain([0,300]).range([0,300]);
-var ScaleY = d3.scaleLinear().domain([0,300]).range([0,300]);
+var ScaleX = d3.scaleLinear().domain([0,30]).range([0, 600]);
+var ScaleY = d3.scaleLinear().domain([0,30]).range([400, 0]);
 
 d3.csv('./data.csv', function(dataIn){
 
