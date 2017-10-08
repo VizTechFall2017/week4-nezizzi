@@ -64,10 +64,10 @@ function drawPoints(dataPoints) {
     svg.selectAll('.myCircles')
         .data(dataPoints)
         .attr('cx', function(d){
-            return d.A8ABEGTR;
+            return ScaleX(d.A8ABEGTR);
         })
         .attr('cy',function(d){
-            return d.A8CBGPCR;
+            return ScaleY(d.A8CBGPCR);
         })
-        .attr('r','10');
+        .attr('r','3');
 }
