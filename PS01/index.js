@@ -33,13 +33,14 @@ svg.append('text')
 d3.csv('./data.csv', function(dataIn){
 
     allData = dataIn;
+    console.log(allData);
 
     //filter out data that is NaN
-    filter1Data = dataIn.filter(function(d) {
-        return (d.A8ABEGTR)  != 'D';
+    filter1Data = allData.filter(function(d) {
+        return d.A8ABEGTR !== 'D';
     });
     filterData = filter1Data.filter(function(d) {
-        return (d.A8CBGPCR)  != 'D';
+        return d.A8CBGPCR !== 'D';
     });
     console.log(filter1Data);
     console.log(filterData);
@@ -71,7 +72,7 @@ d3.csv('./data.csv', function(dataIn){
 //drawing data points function
 function drawPoints(dataPoints) {
     svg.selectAll('.myCircles')
-        .data(filterData)
+        .data(dataPoints)
         .attr('cx', function(d){
             return ScaleX(d.A8ABEGTR);
         })
