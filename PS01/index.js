@@ -48,14 +48,11 @@ d3.csv('./data.csv', function(dataIn){
         .append('circle')
         .attr('class','myCircles');
 
-
-    //call the drawPoints function below, and hand it the data2016 variable with the 2016 object array in it
     drawPoints(female);
     //console.log(female);
     //console.log(male);
 
 });
-
 
 
 //drawing data points function
@@ -69,7 +66,7 @@ function drawPoints(dataPoints) {
             return ScaleY(d.A8CBGPCR);
         })
         .attr('r','3');
-}
+ }
 
 
 function buttonClicked() {
