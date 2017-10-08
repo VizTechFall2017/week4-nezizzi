@@ -5,6 +5,7 @@ var svg = d3.select('svg')
 var allData;
 var male;
 var female;
+gender= female;
 
 //axes
 var ScaleX = d3.scaleLinear().domain([0,30]).range([0, 600]);
@@ -59,8 +60,6 @@ d3.csv('./data.csv', function(dataIn){
 
 //drawing data points function
 function drawPoints(dataPoints) {
-    console.log(dataPoints);
-
     svg.selectAll('.myCircles')
         .data(dataPoints)
         .attr('cx', function(d){
@@ -71,3 +70,30 @@ function drawPoints(dataPoints) {
         })
         .attr('r','3');
 }
+
+
+function buttonClicked() {
+
+    if (gender == female) {
+        male = allData.filter(function (d) {
+            return d.A2GENDER == 2;
+        });
+
+        console.log(male);
+
+        gender = male;
+        updateData(male);
+    }
+
+    else{
+        data2016 = allData.filter(function (d) {
+            return d.A2GENDER == 1;
+        });
+
+        console.log(female);
+
+        gender = female;
+        updateData(female);
+    }
+}
+
