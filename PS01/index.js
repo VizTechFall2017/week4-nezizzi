@@ -3,6 +3,7 @@ var svg = d3.select('svg')
     .attr('transform', 'translate(100,100)');
 
 var allData;
+var filter1Data;
 var male;
 var female;
 gender= female;
@@ -27,17 +28,29 @@ svg.append('text')
     .attr('transform', 'translate(-50,300)rotate(270)');
 
 
+
 //bring in the data!
 d3.csv('./data.csv', function(dataIn){
 
     allData = dataIn;
+
+    //filter out data that is NaN
+    filter1Data = dataIn.filter(function(d) {
+        return (d.A8ABEGTR)  != 'D';
+    });
+    filterData = filter1Data.filter(function(d) {
+        return (d.A8CBGPCR)  != 'D';
+    });
+    //console.log(filter1Data);
+    //console.log(filterData);
+
     //save the objects from the .csv with female
-    female = dataIn.filter(function(d){
+    female = filterData.filter(function(d){
         return d.A2GENDER == 1;
     });
 
     //save the objects from the .csv with male
-    male = dataIn.filter(function(d){
+    male = filterData.filter(function(d){
         return d.A2GENDER == 2;
     });
 
@@ -58,7 +71,7 @@ d3.csv('./data.csv', function(dataIn){
 //drawing data points function
 function drawPoints(dataPoints) {
     svg.selectAll('.myCircles')
-        .data(dataPoints)
+        .data(filterData)
         .attr('cx', function(d){
             return ScaleX(d.A8ABEGTR);
         })
@@ -72,7 +85,7 @@ function drawPoints(dataPoints) {
 function buttonClicked() {
 
     if (gender == female) {
-        male = allData.filter(function (d) {
+        male = filterData.filter(function (d) {
             return d.A2GENDER == 2;
         });
         gender = male;
@@ -80,7 +93,7 @@ function buttonClicked() {
     }
 
     else{
-        data2016 = allData.filter(function (d) {
+        data2016 = filterData.filter(function (d) {
             return d.A2GENDER == 1;
         });
         gender = female;
