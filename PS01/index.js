@@ -78,22 +78,16 @@ function buttonClicked() {
         male = allData.filter(function (d) {
             return d.A2GENDER == 2;
         });
-
-        console.log(male);
-
         gender = male;
-        updateData(male);
+        drawPoints(male);
     }
 
     else{
         data2016 = allData.filter(function (d) {
             return d.A2GENDER == 1;
         });
-
-        console.log(female);
-
         gender = female;
-        updateData(female);
+        drawPoints(female);
     }
 }
 
