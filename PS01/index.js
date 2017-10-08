@@ -15,7 +15,7 @@ svg.append('g')
 svg.append('g')
     .call(d3.axisLeft(ScaleY));
 svg.append('text')
-    .text('DANCERS')
+    .text('Professional Dancer Age Comparison')
     .attr('transform','translate(300, -20)')
     .style('text-anchor','middle');
 svg.append('text')
@@ -45,30 +45,29 @@ d3.csv('./data.csv', function(dataIn){
         .data(female)
         .enter()
         .append('circle')
-        .attr('class','dataPoints');
+        .attr('class','myCircles');
 
 
     //call the drawPoints function below, and hand it the data2016 variable with the 2016 object array in it
-    //drawPoints(female);
-    console.log(female);
-    console.log(male);
+    drawPoints(female);
+    //console.log(female);
+    //console.log(male);
 
 });
-
 
 
 
 //drawing data points function
 function drawPoints(dataPoints) {
     console.log(dataPoints);
+
     svg.selectAll('.myCircles')
         .data(dataPoints)
-        .enter()
         .attr('cx', function(d){
             return d.A8ABEGTR;
         })
         .attr('cy',function(d){
             return d.A8CBGPCR;
         })
-        .attr('r','1');
+        .attr('r','10');
 }
